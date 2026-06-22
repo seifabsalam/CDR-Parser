@@ -1,13 +1,18 @@
 package com.billing.cdrparser;
 
+import java.io.FileInputStream;
 import java.nio.file.*;
 import java.util.List;
+import java.util.Properties;
 
 public class CDRParser {
 
     public static void main(String[] args) throws Exception {
-        Path inputDir  = Path.of(args[0]);
-        Path outputDir = Path.of(args[1]);
+        Properties props = new Properties();
+        props.load(new FileInputStream("db.properties"));
+
+        Path inputDir  = Path.of(props.getProperty("input.dir"));
+        Path outputDir = Path.of(props.getProperty("output.dir"));
 
         var ctx = DatabaseAdaptor.connect();
 
