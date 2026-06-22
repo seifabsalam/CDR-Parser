@@ -20,7 +20,7 @@
         <dependency>
 	    <groupId>com.github.seifabsalam</groupId>
 	    <artifactId>Postgres-Core</artifactId>
-	    <version>v1.0.6</version>
+	    <version>v1.0.7</version>
 	</dependency>
         <dependency>
             <groupId>com.opencsv</groupId>
