@@ -9,7 +9,7 @@ public class CDRParser {
 
     public static void main(String[] args) throws Exception {
         Properties props = new Properties();
-        props.load(new FileInputStream("db.properties"));
+        props.load(new FileInputStream("io.properties"));
 
         Path inputDir  = Path.of(props.getProperty("input.dir"));
         Path outputDir = Path.of(props.getProperty("output.dir"));
