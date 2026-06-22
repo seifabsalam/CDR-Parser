@@ -1,6 +1,7 @@
 package com.billing.cdrparser;
 
 import com.opencsv.bean.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class LineItem {
@@ -15,10 +16,10 @@ public class LineItem {
     private String dialB;
 
     @CsvBindByName(column = "service_type")
-    private int serviceType;
+    private short serviceType;
 
     @CsvBindByName(column = "duration")
-    private int duration;
+    private BigDecimal duration;
 
     @CsvBindByName(column = "start_time")
     @CsvDate("yyyy-MM-dd HH:mm:ss")
@@ -57,19 +58,19 @@ public class LineItem {
         this.dialB = dialB;
     }
 
-    public int getServiceType() {
+    public short getServiceType() {
         return serviceType;
     }
 
-    public void setServiceType(int serviceType) {
+    public void setServiceType(short serviceType) {
         this.serviceType = serviceType;
     }
 
-    public int getDuration() {
+    public BigDecimal getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(BigDecimal duration) {
         this.duration = duration;
     }
 

@@ -54,6 +54,7 @@
                         <database>
                             <name>org.jooq.meta.postgres.PostgresDatabase</name>
                             <inputSchema>public</inputSchema>
+                            <includes>cdr</includes>
                         </database>
                         <target>
                             <packageName>com.telecom.billing.db</packageName>
