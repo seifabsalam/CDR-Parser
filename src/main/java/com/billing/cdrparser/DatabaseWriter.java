@@ -5,11 +5,8 @@
 package com.billing.cdrparser;
 
 import com.telecom.billing.db.tables.*;
-import com.telecom.billing.db.tables.records.*;
-import java.math.BigDecimal;
 import java.util.List;
 import org.jooq.DSLContext;
-import org.jooq.InsertSetMoreStep;
 
 /**
  *
