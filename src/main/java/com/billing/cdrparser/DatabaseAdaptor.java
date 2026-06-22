@@ -2,24 +2,29 @@ package com.billing.cdrparser;
 
 import com.telecom.postgrescore.Database;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import org.jooq.DSLContext;
 
 public class DatabaseAdaptor {
-    public static DSLContext connect() throws FileNotFoundException, IOException  {
+
+    public static DSLContext connect() throws IOException {
         Properties props = new Properties();
-        props.load(new FileInputStream("db.properties"));
-        
-        Database database = new Database(
-                props.getProperty("db.url"),
-                props.getProperty("db.user"),
-                props.getProperty("db.password")
-        );
-        
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> database.close()));
-        
+        try (var fis = new FileInputStream("db.properties")) {
+            props.load(fis);
+        }
+
+        String url      = props.getProperty("db.url");
+        String user     = props.getProperty("db.user");
+        String password = props.getProperty("db.password");
+        if (url == null || user == null || password == null) {
+            throw new IllegalStateException(
+                    "db.properties must define db.url, db.user, and db.password");
+        }
+
+        Database database = new Database(url, user, password);
+        Runtime.getRuntime().addShutdownHook(new Thread(database::close));
+
         return database.getDSLContext();
     }
 }

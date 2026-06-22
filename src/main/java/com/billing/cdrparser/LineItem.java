@@ -29,7 +29,7 @@ public class LineItem {
     private int externalFeePiasters;
 
     @CsvBindByName(column = "is_rated")
-    private boolean isRated;
+    private boolean rated;
 
     public LineItem() {
     }
@@ -91,10 +91,10 @@ public class LineItem {
     }
 
     public boolean isRated() {
-        return isRated;
+        return rated;
     }
 
-    public void setRated(boolean isRated) {
-        this.isRated = isRated;
+    public void setRated(boolean rated) {
+        this.rated = rated;
     }
 }
